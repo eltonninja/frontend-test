@@ -1,4 +1,4 @@
-import { Card as MuiCard, Box, InputLabel, Typography, CardMedia, Checkbox, FormControlLabel } from "@mui/material"
+import { Card as MuiCard, Box, Typography, CardMedia, Checkbox, FormControlLabel } from "@mui/material"
 import React, { useState, useCallback } from "react"
 import "@fontsource/plus-jakarta-sans"
 import "./button.css"
@@ -6,23 +6,6 @@ import floodZoneImage from "./assets/flood-zone.png"
 
 interface CardProps {
   checked: boolean
-}
-
-const useControlled = ({ controlledValue, initialValue }: { controlledValue: any; initialValue: any }) => {
-  const isControlled = controlledValue !== undefined
-  const [internalValue, setInternalValue] = useState(initialValue)
-  const value = isControlled ? controlledValue : internalValue
-
-  const setValueIfUncontrolled = useCallback(
-    (newValue) => {
-      if (!isControlled) {
-        setInternalValue(newValue)
-      }
-    },
-    [isControlled]
-  )
-
-  return [value, setValueIfUncontrolled]
 }
 
 export const Card = ({ checked: controlledChecked }: CardProps) => {
