@@ -2,13 +2,14 @@ import { Card as MuiCard, Box, Typography, CardMedia, Checkbox, FormControlLabel
 import React, { useState, useCallback } from "react"
 import "@fontsource/plus-jakarta-sans"
 import "./button.css"
-import floodZoneImage from "./assets/flood-zone.png"
 
 interface CardProps {
+  cardImage: string
+  cardLabel: string
   checked: boolean
 }
 
-export const Card = ({ checked: controlledChecked }: CardProps) => {
+export const Card = ({ cardImage, cardLabel, checked: controlledChecked }: CardProps) => {
   const isControlled = controlledChecked !== undefined
   const [internalChecked, setInternalChecked] = useState<boolean>(false)
   const checked = isControlled ? controlledChecked : internalChecked
@@ -69,7 +70,7 @@ export const Card = ({ checked: controlledChecked }: CardProps) => {
         sx={{
           width: "229px",
           height: "100px",
-          background: `url(${floodZoneImage})`,
+          background: `url(${cardImage})`,
           backgroundPosition: "-1px -1px",
           backgroundSize: "calc(100% + 2px)",
           boxSizing: "border-box",
@@ -107,7 +108,7 @@ export const Card = ({ checked: controlledChecked }: CardProps) => {
                 ml: "8px"
               }}
             >
-              Flood zone 3
+              {cardLabel}
             </Typography>
           }
           sx={{
