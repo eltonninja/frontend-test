@@ -1,16 +1,46 @@
 import { Card as MuiCard, Box, InputLabel, Typography, CardMedia, Checkbox, FormControlLabel } from "@mui/material"
-import React, { useState } from "react"
+import React, { useState, useCallback } from "react"
 import "@fontsource/plus-jakarta-sans"
 import "./button.css"
 import floodZoneImage from "./assets/flood-zone.png"
 
-interface CardProps {}
+interface CardProps {
+  checked: boolean
+}
 
-export const Card = ({ ...props }: CardProps) => {
-  const [checked, setChecked] = useState(false)
+const useControlled = ({ controlledValue, initialValue }: { controlledValue: any; initialValue: any }) => {
+  const isControlled = controlledValue !== undefined
+  const [internalValue, setInternalValue] = useState(initialValue)
+  const value = isControlled ? controlledValue : internalValue
+
+  const setValueIfUncontrolled = useCallback(
+    (newValue) => {
+      if (!isControlled) {
+        setInternalValue(newValue)
+      }
+    },
+    [isControlled]
+  )
+
+  return [value, setValueIfUncontrolled]
+}
+
+export const Card = ({ checked: controlledChecked }: CardProps) => {
+  const isControlled = controlledChecked !== undefined
+  const [internalChecked, setInternalChecked] = useState<boolean>(false)
+  const checked = isControlled ? controlledChecked : internalChecked
+
+  const setChecked = useCallback(
+    (newChecked: boolean): void => {
+      if (!isControlled) {
+        setInternalChecked(newChecked)
+      }
+    },
+    [isControlled]
+  )
 
   const handleClick = () => {
-    setChecked((c) => !c)
+    setChecked(!checked)
   }
 
   return (

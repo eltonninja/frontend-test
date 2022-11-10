@@ -10,5 +10,18 @@ export default {
 
 const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />
 
-export const Primary = Template.bind({})
-Primary.args = {}
+// Uncontrolled component
+export const Uncontrolled = Template.bind({})
+Uncontrolled.args = {}
+
+// Controlled component set checked
+export const Controlled_Checked = Template.bind({})
+Controlled_Checked.args = {
+  checked: true
+}
+
+// Controlled component set unchecked
+export const Controlled_Unchecked = Template.bind({})
+Controlled_Unchecked.args = {
+  checked: false
+}
