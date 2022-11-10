@@ -13,6 +13,10 @@
     "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@fontsource/plus-jakarta-sans": "^4.5.10",
+    "@mui/material": "^5.10.13",
     "@testing-library/jest-dom": "5.16.2",
     "@testing-library/react": "12.1.3",
     "@testing-library/user-event": "13.5.0",
