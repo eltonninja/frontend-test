@@ -113,6 +113,7 @@ export const Card = ({ cardImage, cardLabel, onClick, checked: controlledChecked
             </Typography>
           }
           sx={{
+            display: "flex",
             m: 0,
             pl: "1px",
             cursor: "pointer !important"
