@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { Button } from "@mui/material"
 import { ComponentMeta, Story } from "@storybook/react"
 
 import { Card } from "./Card"
@@ -23,6 +24,9 @@ const ControlledTemplate: Story = ({ cardImage, cardLabel }) => {
     const [checked, setChecked] = useState<boolean>(false)
     return (
       <div>
+        <Button variant="contained" onClick={() => setChecked((c: boolean) => !c)} sx={{ marginBottom: 2 }}>
+          Toggle
+        </Button>
         <Card
           cardImage={cardImage}
           cardLabel={cardLabel}
@@ -31,9 +35,6 @@ const ControlledTemplate: Story = ({ cardImage, cardLabel }) => {
             setChecked(newChecked)
           }}
         ></Card>
-        <button onClick={() => setChecked((c: boolean) => !c)} style={{ marginTop: 20 }}>
-          Toggle
-        </button>
       </div>
     )
   }

@@ -17,7 +17,7 @@ export const Card = ({ cardImage, cardLabel, onClick, checked: controlledChecked
   const setChecked = useCallback(
     (newChecked: boolean): void => {
       if (isControlled) {
-        onClick(newChecked)
+        onClick && onClick(newChecked)
       } else {
         setInternalChecked(newChecked)
       }
