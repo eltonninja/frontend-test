@@ -1,4 +1,4 @@
-import { Card as MuiCard, Box, Typography, CardMedia, Checkbox, FormControlLabel } from "@mui/material"
+import { Card as MuiCard, Box, Typography, CardMedia, Checkbox, FormControlLabel, useTheme } from "@mui/material"
 import React, { useState, useCallback } from "react"
 interface CardProps {
   cardImage: string
@@ -8,6 +8,8 @@ interface CardProps {
 }
 
 export const Card = ({ cardImage, cardLabel, onClick, checked: controlledChecked }: CardProps) => {
+  const theme = useTheme()
+
   const isControlled = controlledChecked !== undefined
   const [internalChecked, setInternalChecked] = useState<boolean>(false)
   const checked = isControlled ? controlledChecked : internalChecked
@@ -35,7 +37,7 @@ export const Card = ({ cardImage, cardLabel, onClick, checked: controlledChecked
         borderRadius: "10px",
         width: "229px",
         cursor: "pointer",
-        background: "#FFFFFF",
+        background: theme.palette.primary.contrast,
         "&:after": {
           content: '""',
           position: "absolute",
@@ -43,7 +45,7 @@ export const Card = ({ cardImage, cardLabel, onClick, checked: controlledChecked
           left: 0,
           width: "100%",
           height: "100%",
-          border: `1px solid ${checked ? "#3D8479" : "#EFEFEF"}`,
+          border: `1px solid ${checked ? theme.palette.primary.dark : theme.palette.grey[200]}`,
           borderRadius: "10px",
           boxSizing: "border-box"
         },
@@ -75,7 +77,7 @@ export const Card = ({ cardImage, cardLabel, onClick, checked: controlledChecked
           backgroundSize: "calc(100% + 2px)",
           boxSizing: "border-box",
           borderRadius: "10px 10px 0 0",
-          border: `1px solid ${checked ? "#3D8479" : "#EFEFEF"}`,
+          border: `1px solid ${checked ? theme.palette.primary.dark : theme.palette.grey[200]}`,
           borderBottom: "none"
         }}
       />
@@ -91,7 +93,7 @@ export const Card = ({ cardImage, cardLabel, onClick, checked: controlledChecked
                 m: 0,
                 color: "#616161 !important",
                 "&.Mui-checked": {
-                  color: "#21B6A8 !important"
+                  color: `${theme.palette.primary.main} !important`
                 },
                 "& .MuiSvgIcon-root": {
                   width: "18px",
