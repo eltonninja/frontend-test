@@ -1,7 +1,6 @@
 import { Card as MuiCard, Box, Typography, CardMedia, Checkbox, FormControlLabel } from "@mui/material"
 import React, { useState, useCallback } from "react"
 import "@fontsource/plus-jakarta-sans"
-import "./button.css"
 
 interface CardProps {
   cardImage: string
@@ -33,7 +32,7 @@ export const Card = ({ cardImage, cardLabel, checked: controlledChecked }: CardP
       sx={{
         position: "relative",
         borderRadius: "10px",
-        width: "max-content",
+        width: "229px",
         cursor: "pointer",
         background: "#FFFFFF",
         "&:after": {
@@ -41,7 +40,7 @@ export const Card = ({ cardImage, cardLabel, checked: controlledChecked }: CardP
           position: "absolute",
           top: 0,
           left: 0,
-          width: "100%",
+          width: "229px",
           height: "100%",
           border: `1px solid ${checked ? "#3D8479" : "#EFEFEF"}`,
           borderRadius: "10px",
@@ -68,7 +67,7 @@ export const Card = ({ cardImage, cardLabel, checked: controlledChecked }: CardP
       <CardMedia
         component="div"
         sx={{
-          width: "229px",
+          width: "100%",
           height: "100px",
           background: `url(${cardImage})`,
           backgroundPosition: "-1px -1px",
