@@ -1,7 +1,5 @@
 import { Card as MuiCard, Box, Typography, CardMedia, Checkbox, FormControlLabel } from "@mui/material"
 import React, { useState, useCallback } from "react"
-import "@fontsource/plus-jakarta-sans"
-
 interface CardProps {
   cardImage: string
   cardLabel: string
@@ -105,7 +103,6 @@ export const Card = ({ cardImage, cardLabel, onClick, checked: controlledChecked
           label={
             <Typography
               variant="body2"
-              fontFamily="Plus Jakarta Sans"
               sx={{
                 ml: "8px"
               }}
