@@ -3,7 +3,16 @@ export const parameters = {
   controls: {
     matchers: {
       color: /(background|color)$/i,
-      date: /Date$/,
-    },
+      date: /Date$/
+    }
   },
+  backgrounds: {
+    default: "silver",
+    values: [
+      {
+        name: "silver",
+        value: "#E5E5E5"
+      }
+    ]
+  }
 }
