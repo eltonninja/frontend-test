@@ -43,7 +43,7 @@ export const Card = ({ cardImage, cardLabel, onClick, checked: controlledChecked
           position: "absolute",
           top: 0,
           left: 0,
-          width: "229px",
+          width: "100%",
           height: "100%",
           border: `1px solid ${checked ? "#3D8479" : "#EFEFEF"}`,
           borderRadius: "10px",
