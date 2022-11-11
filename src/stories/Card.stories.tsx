@@ -1,5 +1,5 @@
-import React from "react"
-import { ComponentStory, ComponentMeta } from "@storybook/react"
+import React, { useState } from "react"
+import { ComponentMeta, Story } from "@storybook/react"
 
 import { Card } from "./Card"
 import floodZoneImage from "./assets/flood-zone.png"
@@ -9,27 +9,41 @@ export default {
   component: Card
 } as ComponentMeta<typeof Card>
 
-const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />
+const Template: Story = ({ cardImage, cardLabel }) => <Card cardImage={cardImage} cardLabel={cardLabel} />
 
-// Uncontrolled component
+// Uncontrolled component test story
 export const Uncontrolled = Template.bind({})
 Uncontrolled.args = {
   cardImage: floodZoneImage,
   cardLabel: "Flood zone 3"
 }
 
-// Controlled component set checked
-export const Controlled_Checked = Template.bind({})
-Controlled_Checked.args = {
-  cardImage: floodZoneImage,
-  cardLabel: "Flood zone 3",
-  checked: true
+const ControlledTemplate: Story = ({ cardImage, cardLabel }) => {
+  const TestControlledComponent = function () {
+    const [checked, setChecked] = useState<boolean>(false)
+    return (
+      <div>
+        <Card
+          cardImage={cardImage}
+          cardLabel={cardLabel}
+          checked={checked}
+          onClick={(newChecked) => {
+            setChecked(newChecked)
+          }}
+        ></Card>
+        <button onClick={() => setChecked((c: boolean) => !c)} style={{ marginTop: 20 }}>
+          Toggle
+        </button>
+      </div>
+    )
+  }
+
+  return <TestControlledComponent />
 }
 
-// Controlled component set unchecked
-export const Controlled_Unchecked = Template.bind({})
-Controlled_Unchecked.args = {
+// Controlled component test story
+export const Controlled = ControlledTemplate.bind({})
+Controlled.args = {
   cardImage: floodZoneImage,
-  cardLabel: "Flood zone 3",
-  checked: false
+  cardLabel: "Flood zone 3"
 }

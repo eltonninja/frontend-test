@@ -5,21 +5,24 @@ import "@fontsource/plus-jakarta-sans"
 interface CardProps {
   cardImage: string
   cardLabel: string
-  checked: boolean
+  checked?: boolean
+  onClick?: (newChecked: boolean) => void
 }
 
-export const Card = ({ cardImage, cardLabel, checked: controlledChecked }: CardProps) => {
+export const Card = ({ cardImage, cardLabel, onClick, checked: controlledChecked }: CardProps) => {
   const isControlled = controlledChecked !== undefined
   const [internalChecked, setInternalChecked] = useState<boolean>(false)
   const checked = isControlled ? controlledChecked : internalChecked
 
   const setChecked = useCallback(
     (newChecked: boolean): void => {
-      if (!isControlled) {
+      if (isControlled) {
+        onClick(newChecked)
+      } else {
         setInternalChecked(newChecked)
       }
     },
-    [isControlled]
+    [isControlled, onClick]
   )
 
   const handleClick = () => {
